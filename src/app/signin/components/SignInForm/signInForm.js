@@ -31,7 +31,7 @@ export default function SignInForm() {
     (values) => {
       dispatch(signInAction(values, router));
     },
-    [dispatch]
+    [dispatch, router]
   );
 
   return (

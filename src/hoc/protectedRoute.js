@@ -20,7 +20,7 @@ const ProtectedRoute = ({ children }) => {
     } else if (!profile?.data) {
       dispatch(getMeAction(router));
     }
-  }, []);
+  }, [dispatch, router]);
 
   if (profile?.loading) {
     return <TutorialCardSkeleton />;
