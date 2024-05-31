@@ -16,11 +16,11 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     if (!token) {
       router.push("/signin");
-      toast.error("User not logged in!!");
+      toast.error("User not logged in&#39;!!"); // Escaped the single quote
     } else if (!profile?.data) {
       dispatch(getMeAction(router));
     }
-  }, [dispatch, router]);
+  }, [token, profile?.data, dispatch, router]);
 
   if (profile?.loading) {
     return <TutorialCardSkeleton />;
