@@ -1,9 +1,9 @@
 import TutorialCard from "@/components/tutorialCard/tutorialCard";
-import tutorialsApi from "@/lib/api/tutorials/tutorials.api";
+import tutorialsServices from "@/lib/services/tutorials.services";
 import React from "react";
 
 export default async function TutorialCardWrapper() {
-  const response = await tutorialsApi.getAllTutorials();
+  const response = await tutorialsServices.getAllTutorials();
 
   return (
     <div className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">

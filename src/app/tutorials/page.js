@@ -1,13 +1,18 @@
 import CustomPagination from "@/components/pagination/pagination";
 import Searchbar from "@/components/searchbar/searchbar";
 import TutorialCard from "@/components/tutorialCard/tutorialCard";
-import tutorialsApi from "@/lib/api/tutorials/tutorials.api";
+import tutorialsServices from "@/lib/services/tutorials.services";
 import React from "react";
+
+export const metadata = {
+  title: "onlyjs tutorials",
+  description: "Browse all of the available tutorials in onlyjs",
+};
 
 export default async function TutorialsPage({ searchParams }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
-  const response = await tutorialsApi.getAllTutorials(query, currentPage);
+  const response = await tutorialsServices.getAllTutorials(query, currentPage);
 
   return (
     <div className="w-full">

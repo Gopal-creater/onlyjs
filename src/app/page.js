@@ -4,6 +4,10 @@ import { Suspense } from "react";
 import TutorialCardSkeleton from "../components/tutorialCard/tutorialCardSkeleton";
 import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 
+export const metadata = {
+  title: "onlyjs",
+};
+
 export default async function Home() {
   return (
     <div>

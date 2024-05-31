@@ -18,4 +18,4 @@ const apiUrls = {
 //     : "staging"
 // ];
 
-export default apiUrls["production"];
+export default apiUrls["localhost"];
