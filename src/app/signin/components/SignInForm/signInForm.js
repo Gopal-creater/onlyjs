@@ -1,7 +1,7 @@
 "use client";
-import React, { useCallback } from "react";
+import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,25 +14,29 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import Spinner from "@/components/ui/spinner";
-import { useSelector, useDispatch } from "react-redux";
-import { signInAction } from "@/redux/actions/authActions";
 import { signInFormSchema } from "../../signInFormSchema";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { signIn } from "@/lib/services/auth.services";
 
 export default function SignInForm() {
-  const auth = useSelector((state) => state?.auth?.auth);
-  const dispatch = useDispatch();
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(signInFormSchema),
   });
+  const { isSubmitting } = useFormState({
+    control: form.control,
+  });
 
-  const handleSignIn = useCallback(
-    (values) => {
-      dispatch(signInAction(values, router));
-    },
-    [dispatch, router]
-  );
+  const handleSignIn = async (data) => {
+    try {
+      const res = await signIn(data);
+      router.push("/dashboard");
+    } catch (err) {
+      console.log("Error", err);
+      toast.error(err?.message);
+    }
+  };
 
   return (
     <Form {...form}>
@@ -71,8 +75,8 @@ export default function SignInForm() {
           </Link>
         </div>
 
-        <Button type="submit" className="w-full" disabled={auth.loading}>
-          {auth.loading ? <Spinner /> : "Submit"}
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? <Spinner /> : "Submit"}
         </Button>
 
         <div className="text-center">

@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div>
       <Banner />
-      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight mt-2">
+      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight pt-2">
         Some of our top tutorials
       </h2>
       <ErrorBoundary isDefault={false}>

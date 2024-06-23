@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="relative -mx-6 px-6 py-20 bg-secondary-foreground text-primary-foreground">
+    <div className="px-6 py-20 -mx-6 bg-secondary-foreground text-primary-foreground">
       <p className="text-sm text-muted-foreground text-center">
         <span className="text-slate-50">Welcome</span> to our
         <span className="text-slate-50"> JavaScript tutorial blog</span>, where

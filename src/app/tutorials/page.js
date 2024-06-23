@@ -1,7 +1,8 @@
+import NoData from "@/components/noData/noData";
 import CustomPagination from "@/components/pagination/pagination";
 import Searchbar from "@/components/searchbar/searchbar";
 import TutorialCard from "@/components/tutorialCard/tutorialCard";
-import tutorialsServices from "@/lib/services/tutorials.services";
+import * as tutorialsServices from "@/lib/services/tutorials.services";
 import React from "react";
 
 export const metadata = {
@@ -9,19 +10,21 @@ export const metadata = {
   description: "Browse all of the available tutorials in onlyjs",
 };
 
-export default async function TutorialsPage({ searchParams }) {
+export default async function Page({ searchParams }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   const response = await tutorialsServices.getAllTutorials(query, currentPage);
 
+  if (response?.data?.totalDocs === 0) return <NoData />;
+
   return (
-    <div className="w-full">
+    <div className="h-full w-full">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           Browse our all tutorials
         </h2>
         <div className="min-w-[250px] mt-3 md:mt-0  md:min-w-[500px]">
-          <Searchbar placeholder="Search invoices..." />
+          <Searchbar placeholder="Search tutorials..." />
         </div>
       </div>
       <div className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">

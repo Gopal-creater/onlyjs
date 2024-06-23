@@ -1,6 +1,8 @@
-import ProtectedRoute from "@/hoc/protectedRoute";
+"use server";
+import { getAllTutorials } from "@/lib/services/tutorials.services";
 import React from "react";
 
-export default function DashboardPage() {
-  return <ProtectedRoute>Secret DashboardPage</ProtectedRoute>;
+export default async function DashboardPage() {
+  await getAllTutorials();
+  return <div>Dashboard Content</div>;
 }
