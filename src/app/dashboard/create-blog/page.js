@@ -19,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import topicServices from "@/lib/services/topic.services";
 import QuillEditor from "@/components/quillEditor/quilEditor";
 
-export default function page() {
+export default function Page() {
   const [state, setState] = React.useState({
     blog: "",
   });
