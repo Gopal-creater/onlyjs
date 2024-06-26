@@ -1,14 +1,13 @@
 "use client";
 
 import { Input } from "../ui/input";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { IoSearchOutline } from "react-icons/io5";
 import { Label } from "../ui/label";
 
 export default function Searchbar({ placeholder }) {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const { replace } = useRouter();
 
   // Inside the Search Component...
@@ -20,7 +19,7 @@ export default function Searchbar({ placeholder }) {
     } else {
       params.delete("query");
     }
-    replace(`${pathname}?${params.toString()}`);
+    replace(`/blogs?${params.toString()}`);
   }, 300);
 
   return (

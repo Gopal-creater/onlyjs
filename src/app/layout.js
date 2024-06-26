@@ -7,6 +7,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata = {
+  title: "twitcode",
+  description: "blog related to techstack",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

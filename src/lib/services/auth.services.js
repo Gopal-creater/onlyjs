@@ -71,3 +71,16 @@ export const getCookie = async () => {
   }
   return undefined;
 };
+
+export const getUser = async () => {
+  const cookie = cookies().get("onlyjs_cookie");
+  if (cookie) {
+    try {
+      const data = await JSON.parse(cookie.value);
+      return data.user;
+    } catch (err) {
+      return undefined;
+    }
+  }
+  return undefined;
+};

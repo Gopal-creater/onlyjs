@@ -10,9 +10,9 @@ export default async function Navigation({ session }) {
   return (
     <nav className="hidden md:block">
       <ul className="flex space-x-4">
-        {navItems?.map((item) => {
+        {navItems?.map((item, index) => {
           return (
-            <li key={item}>
+            <li key={index}>
               <Link href={item.href}>{item.name}</Link>
             </li>
           );
