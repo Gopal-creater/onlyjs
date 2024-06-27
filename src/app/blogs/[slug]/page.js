@@ -3,6 +3,7 @@ import { getUser } from "@/lib/services/auth.services";
 import { getBlogBySlug } from "@/lib/services/blogs.services";
 import Link from "next/link";
 import React from "react";
+import "highlight.js/styles/vs2015.css";
 
 const Page = async ({ params }) => {
   const blog = await getBlogBySlug(params.slug);
@@ -43,10 +44,12 @@ const Page = async ({ params }) => {
           {user?.role === "admin" && <DeleteBlogBtn slug={params.slug} />}
         </div>
 
-        <div
-          className="mt-10"
-          dangerouslySetInnerHTML={{ __html: blog?.data?.blog }}
-        />
+        <div className="ql-snow">
+          <div
+            className="mt-10 ql-editor"
+            dangerouslySetInnerHTML={{ __html: blog?.data?.blog }}
+          />
+        </div>
       </div>
       <div className="w-0 lg:w-[300px]"></div>
     </div>
