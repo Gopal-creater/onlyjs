@@ -13,7 +13,7 @@ const apiUrls = {
 export default apiUrls[
   JSON.stringify(process.env.REACT_APP_ENV) === "localhost"
     ? "localhost"
-    : process.env.REACT_APP_ENV === "production"
-    ? "production"
-    : "staging"
+    : process.env.REACT_APP_ENV === "staging"
+    ? "staging"
+    : "production"
 ];
